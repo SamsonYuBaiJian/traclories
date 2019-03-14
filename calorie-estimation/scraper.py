@@ -7,18 +7,19 @@ import csv
 
 url = "https://www.allrecipes.com/recipes/"
 page_url = "?page="
-pages = 20
-csv_directory = "./dataset"
-image_directory = "./dataset/images"
+pages = 15
+csv_file = './info.csv'
+## csv_directory = "./dataset"
+## image_directory = "./dataset/images"
 
 # check https://www.allrecipes.com/robots.txt
 crawl_delay = 3
 
 # create csv file
-if os.path.isfile(csv_directory + '/info.csv') == False:
-    with open(csv_directory + '/info.csv', 'w') as csvfile:
+if os.path.isfile(csv_file) == False:
+    with open(csv_file, 'w') as csvfile:
         filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        filewriter.writerow(['Name', 'Calories', 'Image URL', 'Serving Size', 'Fat(g)', 'Carbohydrate(g)', 'Protein(g)', 'Cholesterol(mg)', 'Sodium(mg)', 'Category', 'URL'])
+        filewriter.writerow(['Name', 'Calories', 'Serving Size', 'Fat(g)', 'Carbohydrate(g)', 'Protein(g)', 'Cholesterol(mg)', 'Sodium(mg)', 'Category', 'URL'])
 
 names = []
 urls = {}
@@ -49,14 +50,17 @@ for category, link in urls.items():
         print("URL: " + target_url)
         print("\n")
 
-        target_html = urlopen(target_url)
-        soup = BeautifulSoup(target_html, features="lxml")
+        try:
+            target_html = urlopen(target_url)
+            soup = BeautifulSoup(target_html, features="lxml")
+        except:
+            continue
 
         try:
 
             for tag in soup.find_all('article', {'class':['fixed-recipe-card', 'ng-isolate-scope']}):
                 try:
-                    recipe_image = tag.find_all('img', {'class': 'fixed-recipe-card__img'})[0].get('data-original-src')
+                    ## recipe_image = tag.find_all('img', {'class': 'fixed-recipe-card__img'})[0].get('data-original-src')
 
                     recipe_url = tag.find_all('a', {'href': re.compile('allrecipes.com/recipe/')}, {'data-click-id': re.compile('card slot')})[0].get('href')
                     recipe_html = urlopen(recipe_url)
@@ -84,7 +88,7 @@ for category, link in urls.items():
                         print("Item: " + str(item))
                         print("Name: " + name)
                         print("Calories: " + str(calories))
-                        print("Image URL: " + recipe_image)
+                        ## print("Image URL: " + recipe_image)
                         print("Serving Size: " + serving_size)
                         print("Fat: " + fat + "g")
                         print("Carbohydrate: " + carbohydrate + "g")
@@ -92,20 +96,20 @@ for category, link in urls.items():
                         print("Cholesterol: " + cholesterol + "mg")
                         print("Sodium: " + sodium + "mg")
                         print("Category: " + category)
-                        print("URL: " + recipe_url)
+                        print("URL: " + recipe_url + "\n")
 
                         # save data
-                        with open(csv_directory + '/info.csv', 'a') as csvfile:
+                        with open(csv_file, 'a') as csvfile:
                             filewriter = csv.writer(csvfile)
                             filewriter.writerow(
-                                [name, str(calories), recipe_image, serving_size, fat, carbohydrate, protein, cholesterol, sodium, category, recipe_url])
-                        urlretrieve(recipe_image, image_directory + "/" + name)
+                                [name, str(calories), serving_size, fat, carbohydrate, protein, cholesterol, sodium, category, recipe_url])
+                        ## urlretrieve(recipe_image, image_directory + "/" + name)
 
                         print("\n")
                 except:
-                    pass
+                    continue
 
                 time.sleep(crawl_delay)
 
         except:
-            pass
+            continue

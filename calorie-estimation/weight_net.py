@@ -1,28 +1,52 @@
 from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
-
-# loss = estimate - real
-
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+import pickle
+import os
 
 class NeuralNetwork:
-    def __init__(self, x, y):
-        # first 10 from cv_test.py, second 10 from nlp_test.py
-        self.input      = x
-        self.weights1   = np.random.rand(self.input.shape[1],4)
-        self.weights2   = np.random.rand(4,1)
-        self.y          = y
-        self.output     = np.zeros(self.y.shape)
 
-    def feedforward(self):
-        self.layer1 = sigmoid(np.dot(self.input, self.weights1))
-        self.output = sigmoid(np.dot(self.layer1, self.weights2))
+    def __init__(self, batch_size):
+        self.batch_size = batch_size
+        self.model = Sequential()
+        self.model.add(Dense(self.batch_size, activation='relu', input_shape=(5,)))
+        self.model.add(Dense(30, activation='relu'))
+        self.model.add(Dense(1))
+        self.model.compile(optimizer='adam',
+                           loss='mse')
+        self.fit = None
 
-    def backprop(self):
-        # application of the chain rule to find derivative of the loss function with respect to weights2 and weights1
-        d_weights2 = np.dot(self.layer1.T, (2*(self.y - self.output) * sigmoid_derivative(self.output)))
-        d_weights1 = np.dot(self.input.T,  (np.dot(2*(self.y - self.output) * sigmoid_derivative(self.output), self.weights2.T) * sigmoid_derivative(self.layer1)))
+    def train(self, input, real, number):
+        fit = self.model.fit(input, real,validation_split=0.2, epochs=100)
+        fit.history['title'] = number
+        loss, = plt.plot(fit.history['loss'], label="Loss")
+        val_loss, = plt.plot(fit.history['val_loss'], label="Validation Loss")
+        plt.legend(handles=[loss, val_loss])
+        plt.title('Loss vs Epoch (' + str(number) + ')')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.show()
 
-        # update the weights with the derivative (slope) of the loss function
-        self.weights1 += d_weights1
-        self.weights2 += d_weights2
+        if os.path.exists("./history"):
+            os.remove("./history")
+        if os.path.exists("./model.h5"):
+            os.remove("./model.h5")
+
+        with open('./history', 'wb') as hist:
+            pickle.dump(fit.history, hist)
+        hist.close()
+
+        self.model.save("./model.h5")
+
+    def predict_calorie(self, test):
+        test_fix = []
+        for l in test:
+            for e in l:
+                test_fix.append(int(e))
+        test_array = np.array(test_fix)
+        test_array = np.expand_dims(test_array,axis=0)
+
+        test_output = self.model.predict(test_array, batch_size=1)
+        return test_output

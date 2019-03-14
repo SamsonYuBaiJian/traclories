@@ -7,69 +7,73 @@ from nltk.stem.porter import *
 import numpy as np
 from gensim.models import Word2Vec
 from gensim.similarities import WmdSimilarity
-
-np.random.seed(2018)
-
 import nltk
-nltk.download('wordnet')
 
-csv = "./dataset/info.csv"
+class NLPModel:
+    def __init__(self, data):
+        self.csv = "./info.csv"
+        self.data = data
+        self.data_text = self.data[['Name']]
+        self.data_calorie = self.data[['Calories']]
+        self.data_size = len(self.data)
+        self.full_list = []
+        self.model = None
+        self.num_best = 5
+        self.instance = None
 
-data = pd.read_csv(csv, error_bad_lines=False)
-data_text = data[['Name']]
-data_size = len(data)
+    def lemmatize_stemming(self, text):
+        stemmer = PorterStemmer()
+        return stemmer.stem(WordNetLemmatizer().lemmatize(text, pos='v'))
 
+    # preprocess: tokenisation, stopwords removed, lemmatised and stemmed
+    def preprocess(self, text):
+        result = []
+        for token in gensim.utils.simple_preprocess(text):
+            if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 2:
+                result.append(self.lemmatize_stemming(token))
+        return result
 
-def lemmatize_stemming(text):
-    stemmer = PorterStemmer()
-    return stemmer.stem(WordNetLemmatizer().lemmatize(text, pos='v'))
+    def make_word_list(self):
+        nltk.download('wordnet')
 
-# preprocess: tokenisation, stopwords removed, lemmatised and stemmed
-def preprocess(text):
-    result = []
-    for token in gensim.utils.simple_preprocess(text):
-        if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3:
-            result.append(lemmatize_stemming(token))
-    return result
+        # make word list from both names and categories
+        for i in range(self.data_size):
+            new_list = []
+            final_list = []
+            for j in self.data[['Name']].values[i][0].split(' '):
+                k = self.preprocess(j)
+                if k != []:
+                    new_list.append(k)
+            for j in self.data[['Category']].values[i][0].split(' '):
+                k = self.preprocess(j)
+                if k != []:
+                    new_list.append(k)
+            if new_list != []:
+                for i in new_list:
+                    final_list.append(i[0])
+            self.full_list.append(final_list)
 
-new_list = []
-final_list = []
-full_list = []
+    def train(self):
+        np.random.seed(2018)
 
-# make word list from both names and categories
-for i in range(data_size):
-    new_list = []
-    final_list = []
-    for j in data[['Name']].values[i][0].split(' '):
-        k = preprocess(j)
-        if k != []:
-            new_list.append(k)
-    for j in data[['Category']].values[i][0].split(' '):
-        k = preprocess(j)
-        if k != []:
-            new_list.append(k)
-    if new_list != []:
-        for i in new_list:
-            final_list.append(i[0])
-    full_list.append(final_list)
+        self.make_word_list()
 
+        self.model = gensim.models.Word2Vec(self.full_list, min_count=1, size=300, workers=4)
 
-sent = 'Delicious Apple Pie'
-query = preprocess(sent)
+        # normalise vectors
+        self.model.init_sims(replace=True)
+        self.instance = WmdSimilarity(self.full_list, self.model, num_best=self.num_best)
 
-print("\n")
-print("Query: " + sent)
-print("\n")
+    def predict(self, sent):
+        query = self.preprocess(sent)
+        sims = self.instance[query]
+        calorie_list = []
 
-model = gensim.models.Word2Vec(full_list, min_count=1,size=300,workers=4)
+        print("\nNLP predictions:\n")
 
-# normalise vectors
-model.init_sims(replace=True)
-num_best = 10
-instance = WmdSimilarity(full_list, model, num_best=num_best)
+        for i in range(self.num_best):
+            print(self.data['Name'][sims[i][0]])
+            calorie_list.append(self.data['Calories'][sims[i][0]])
+        print("\n")
 
-sims = instance[query]
-
-for i in range(num_best):
-    print(data['Name'][sims[i][0]])
-print("\n")
+        return calorie_list
