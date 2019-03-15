@@ -1,5 +1,7 @@
 # Traclories
-Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup and pandas (VGG-16 failed).
+Calorie estimation with Keras, Gensim, NLTK and pandas (VGG-16 failed).
+Automating calorie tracking by integrating DBS PayLah! and Healthy 365.
+Collected nutritional data from Allrecipes with BeautifulSoup.
 
 ## Steps:
 1. Scrape food information from https://www.allrecipes.com/recipes/. (./calorie-estimation/scraper.py)
