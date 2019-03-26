@@ -9,28 +9,25 @@ CORS(app)
 nlp_check = NLPCheck()
 
 menu_list = [
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken with Rice", 3.00,
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-86.jpg", "Steamed Chicken with Rice", 3.00,
      618],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken Wing with Rice", 3.00,
+    ["https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/NC4GztZqgikdztf21/man-creates-dishes-portion-from-chicken-wings-with-rice_sk8vsdlrg_thumbnail-full01.png", "Steamed Chicken Wing with Rice", 3.00,
      620],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Drumstick Rice", 3.50,
+    ["https://www.wokandskillet.com/wp-content/uploads/2015/05/chicken-rice.jpg", "Steamed Drumstick Rice", 3.50,
      687],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Roasted Chicken with Rice", 3.00,
+    ["https://i.ytimg.com/vi/o8PW0xN6uPs/hqdefault.jpg", "Roasted Chicken with Rice", 3.00,
      688],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Roasted Chicken Wing with Rice", 3.00,
+    ["https://i.pinimg.com/originals/4d/4c/b5/4d4cb59ad4a83a322daeb7d63cbcbf89.jpg", "Roasted Chicken Wing with Rice", 3.00,
      690],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Roasted Drumstick Rice", 3.50,
+    ["http://www.swankyrecipes.com/wp-content/uploads/2015/03/Honey-Mustard-Chicken-easyrecipe.jpg", "Roasted Drumstick Rice", 3.50,
      757],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Fried Lemon Chicken with Rice", 4.00,
+    ["https://s3-media1.fl.yelpcdn.com/bphoto/4UtS56S8Hb_otbjlxhi2KA/o.jpg", "Fried Lemon Chicken with Rice", 4.00,
      1277],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Thai Chicken Cutlet with Rice", 4.00,
+    ["http://mmm-yoso.typepad.com/mmmyoso/images/2008/01/18/01062008_013_2.jpg", "Thai Chicken Cutlet with Rice", 4.00,
      1142],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken Noodles",
+    ["https://i.pinimg.com/originals/76/fd/09/76fd093945198fa83de25de535b43f2d.jpg", "Steamed Chicken Noodles",
      3.00,
-     593],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Roasted Chicken Noodles",
-     3.00,
-     663]]
+     593]]
 
 @app.route('/menu')
 def return_menu():

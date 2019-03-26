@@ -25,7 +25,7 @@ class Add extends Component {
         e.preventDefault();
 
         this.setState({
-          image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Hainanese_Chicken_Rice.jpg"
+          image: "http://www.springtomorrow.com/wp-content/uploads/2013/11/img_6039.jpg"
         });
     }
 
@@ -59,7 +59,7 @@ class Add extends Component {
 
         axios.post('http://127.0.0.1:5000/update_menu', {
             name: this.state.name,
-            image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Hainanese_Chicken_Rice.jpg",
+            image: "http://www.springtomorrow.com/wp-content/uploads/2013/11/img_6039.jpg",
             calories: this.state.calories,
             price: this.state.price
         })
