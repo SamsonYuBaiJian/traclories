@@ -69,7 +69,7 @@ kiwisolver==1.0.1
 launchpadlib==1.10.6
 lazr.restfulclient==0.13.5
 lazr.uri==1.0.3
-leveldb==0.1
+#leveldb==0.1
 LocalitySensitiveHashing==1.0.1
 lockfile==0.12.2
 louis==3.5.0
