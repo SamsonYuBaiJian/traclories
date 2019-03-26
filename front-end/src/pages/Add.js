@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Link, NavLink, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class Add extends Component {
@@ -10,7 +10,8 @@ class Add extends Component {
             name: '',
             image: '',
             calories: '',
-            price: ''
+            price: '',
+            submit: 'Submit'
         }
 
 
@@ -34,7 +35,7 @@ class Add extends Component {
         });
 
         axios.post('http://127.0.0.1:5000/calculate', {
-            name: this.state.name,
+            name: e.target.value,
         })
             .then(res => {
                 console.log(res.data);
@@ -65,6 +66,16 @@ class Add extends Component {
             .then(res => {
                 console.log(res);
             });
+
+        this.setState({
+        	submit: 'Submitted!'
+        });
+
+        setTimeout(() => {
+            this.setState({
+            submit: 'Submit New Item?'
+          })
+        }, 1500);
     }
 
 
@@ -72,43 +83,45 @@ class Add extends Component {
 
         return (
         <div className="App">
-          <div className="App__AsideMenu">
-          <div className="Small__Title">
-          Traclories
-          </div>
+          <div className="App__Aside"><img src="https://www.azamaraclubcruises.com/sites/default/files/heros/med-food-hero.jpg" style={{width: "100%",height:"100%"}}/>
           </div>
 
-          <div className="App__FormMenu">
+          <div className="Menu__Title">Traclories</div>
+
+          <div className="App__FormTop">
               <div className="FormTitle">
                   <NavLink to="/menu" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Menu</NavLink>
-                  or<NavLink exact to="/add-items" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Add Items</NavLink>
-                  or<NavLink exact to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Out</NavLink>
+                  <NavLink exact to="/add" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Add Items</NavLink>
+                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Logout</NavLink>
               </div>
               <div className="Store__Name">
               Changi Chicken Rice
               </div>
-
-              <div className="Gap">
-              <input type="file" id="image" name="image" value={this.state.image} onChange={this.handleChangeImage}/>
-              </div>
-
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="name">Item Name</label>
-                <input type="text" id="name" className="FormField__Input" placeholder="Enter item name" name="name" value={this.state.name} onChange={this.handleChangeName} />
-              </div>
-
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="price">Price</label>
-                <input type="text" id="price" className="FormField__Input" placeholder="Enter price" name="price" value={this.state.price} onChange={this.handleChangePrice} />
-              </div>
-              <div className="Gap">
-              <label className="FormField__Label" htmlFor="calories">Calories: {this.state.calories}</label>
-              </div>
-
-              <div className="FormField">
-                 <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Submit</button>
-              </div>
           </div>
+          <div className="App__FormBottom">
+
+              <div className="FormFieldMin">
+              <label className="FormField__LabelMenu" htmlFor="photo">Upload Photo</label>
+              <div className="Gap"></div>
+
+              <input type="file" id="image" name="image" onChange={this.handleChangeImage}/>
+              </div>
+
+              <div className="FormFieldMin">
+                <label className="FormField__LabelMenu" htmlFor="name">Name</label>
+                <input type="text" id="name" autocomplete="off" className="FormField__InputMin" name="name" value={this.state.name} onChange={this.handleChangeName} />
+              </div>
+
+              <div className="FormFieldMin">
+                <label className="FormField__LabelMenu" htmlFor="price">Price</label>
+                <input type="text" id="price" autocomplete="off" className="FormField__InputMin" name="price" value={this.state.price} onChange={this.handleChangePrice} />
+              </div>
+              <div className="FormFieldMin">
+              <label className="FormField__LabelMenu" htmlFor="calories">Calories: {this.state.calories}</label>
+              </div>
+
+                 <button className="FormField__Button mr-20" onClick={this.handleSubmit}>{this.state.submit}</button>
+                 </div>
         </div>
         );
     }

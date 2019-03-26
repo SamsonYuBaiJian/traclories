@@ -29,42 +29,42 @@ class SignInForm extends Component {
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
+        window.open('https://internet-banking.dbs.com.sg/ibAPL/Welcome', '_blank');
     }
 
     render() {
         return (
         <div className="App">
-          <div className="App__Aside">
-          <div className="Big__Title">
-          Traclories
-          </div></div>
+
+          <div className="App__Aside"><img src="https://totaleyecare.com.au/wp-content/uploads/2017/11/veg_lowres.jpg" style={{width: "100%",height:"100%"}}/>
+</div>    
 
           <div className="App__Form">
-            <div className="PageSwitcher">
-                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                <NavLink to="/" exact activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
-              </div>
-
-              <div className="FormTitle">
-                  <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> 
-                  or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
-              </div>
 
                 <div className="FormCenter">
-                    <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+                <div className="Big__Title">Traclories</div>
+                    <form onSubmit={this.handleSubmit} onSubmit={this.handleSubmit}>
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <label className="FormField__Label" htmlFor="email">Email</label>
+                        <input type="email" autocomplete="off" id="email" className="FormField__Input" name="email" value={this.state.email} onChange={this.handleChange} />
                       </div>
 
                       <div className="FormField">
                         <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <input type="password" id="password" className="FormField__Input" name="password" value={this.state.password} onChange={this.handleChange} />
                       </div>
 
                       <div className="FormField">
-                          <NavLink to="/menu" className="FormField"><button className="FormField__Button mr-20">Sign In</button></NavLink> <NavLink to="/" className="FormField__Link">Create an account</NavLink>
+                          <NavLink to="/menu" className="FormField"><button className="FormField__Button mr-20">Login</button></NavLink> 
+                          <div className="Button__Gap"></div>
+                          <button className="FormField__ButtonBottom mr-20">Get Started</button>
                       </div>
+                      <div className="FormField__Bottom">
+                        Forgot Email or Password
+                        </div>
+                        <div className="FormField__Bottom">
+                        Frequently Asked Questions
+                        </div>
                     </form>
                   </div>
             </div>

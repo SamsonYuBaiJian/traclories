@@ -31,22 +31,22 @@ class Menu extends Component {
 
         return (
         <div className="App">
-          <div className="App__AsideMenu">
-          <div className="Small__Title">
-          Traclories
-          </div>
+          <div className="App__Aside"><img src="https://www.azamaraclubcruises.com/sites/default/files/heros/med-food-hero.jpg" style={{width: "100%",height:"100%"}}/>
           </div>
 
-          <div className="App__FormMenu">
+          <div className="Menu__Title">Traclories</div>
+
+          <div className="App__FormTop">
               <div className="FormTitle">
                   <NavLink to="/menu" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Menu</NavLink>
-                  or<NavLink exact to="/add-items" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Add Items</NavLink>
-                  or<NavLink exact to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Out</NavLink>
+                  <NavLink exact to="/add" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Add Items</NavLink>
+                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Logout</NavLink>
               </div>
               <div className="Store__Name">
               Changi Chicken Rice
               </div>
-
+          </div>
+          <div className="App__FormBottom">
                 {this.state.items.map(function(item,index){
                         return <div className="Image">
                                 <img src={item[0]}/>
