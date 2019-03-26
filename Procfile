@@ -1,1 +1,1 @@
-web: gunicorn ./server:app = Flask(__name__)
+web: gunicorn --chrdir backend server:app = Flask(__name__)
