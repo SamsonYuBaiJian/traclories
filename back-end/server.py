@@ -17,7 +17,7 @@ def return_menu():
         data = pd.read_csv(file, error_bad_lines=False)
     data_size = len(data)
     for i in range(data_size):
-        menu_list.append([data[['Image']].values[i][0],data[['Name']].values[i][0],str(data[['Price']].values[i][0]),str(data[['Calories']].values[i][0])])
+        menu_list.append([data[['Image']].values[i][0],data[['Name']].values[i][0],data[['Price']].values[i][0],str(data[['Calories']].values[i][0])])
     menu = json.dumps(menu_list)
     return menu
 
@@ -30,7 +30,7 @@ def update_menu():
     with open('./demo.csv', 'a') as file:
         filewriter = csv.writer(file)
         filewriter.writerow(
-            [name, calorie, image, price])
+            [name, int(calorie), image, price])
     return "OK"
 
 @app.route('/calculate',methods=['POST'])

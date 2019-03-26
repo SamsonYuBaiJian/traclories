@@ -34,7 +34,7 @@ class Add extends Component {
           name: e.target.value
         });
 
-        axios.post('https://traclories.herokuapp.com/calculate', {
+        axios.post('http://127.0.0.1:5000/calculate', {
             name: e.target.value,
         })
             .then(res => {
@@ -57,7 +57,7 @@ class Add extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        axios.post('https://traclories.herokuapp.com/update_menu', {
+        axios.post('http://127.0.0.1:5000/update_menu', {
             name: this.state.name,
             image: "http://www.springtomorrow.com/wp-content/uploads/2013/11/img_6039.jpg",
             calories: this.state.calories,
