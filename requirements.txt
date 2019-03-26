@@ -72,7 +72,7 @@ lazr.uri==1.0.3
 #leveldb==0.1
 LocalitySensitiveHashing==1.0.1
 lockfile==0.12.2
-louis==3.5.0
+#louis==3.5.0
 lshash3==0.0.8
 lxml==4.3.2
 macaroonbakery==1.1.3
