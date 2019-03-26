@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, session
 from final import NLPCheck
 from flask_cors import CORS
 import json
@@ -8,9 +8,7 @@ CORS(app)
 
 nlp_check = NLPCheck()
 
-class Menu():
-    def __init__(self):
-        self.menu_list = [
+session['menu'] = [
     ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-86.jpg", "Steamed Chicken with Rice", 3.00,
      618],
     ["https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/NC4GztZqgikdztf21/man-creates-dishes-portion-from-chicken-wings-with-rice_sk8vsdlrg_thumbnail-full01.png", "Steamed Chicken Wing with Rice", 3.00,
@@ -31,12 +29,10 @@ class Menu():
      3.00,
      593]]
 
-menu = Menu()
-
 @app.route('/menu')
 def return_menu():
-    menu_return = json.dumps(menu.menu_list)
-    return menu_return
+    menu = json.dumps(session['menu'])
+    return menu
 
 @app.route('/update_menu',methods=['POST'])
 def update_menu():
@@ -44,7 +40,8 @@ def update_menu():
     calorie = request.json["calories"]
     image = request.json["image"]
     price = request.json["price"]
-    menu.menu_list.append([image, name, float(price), int(calorie)])
+    session['menu'].append([image, name, float(price), int(calorie)])
+    session.modified = True
     return "OK"
 
 @app.route('/calculate',methods=['POST'])
