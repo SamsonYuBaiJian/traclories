@@ -18,6 +18,7 @@ def return_menu():
     data_size = len(data)
     for i in range(data_size):
         menu_list.append([data[['Image']].values[i][0],str(data[['Name']].values[i][0]),data[['Price']].values[i][0],str(data[['Calories']].values[i][0])])
+    print(menu_list)
     menu = json.dumps(menu_list)
     return menu
 
