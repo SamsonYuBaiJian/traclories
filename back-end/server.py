@@ -9,14 +9,28 @@ CORS(app)
 nlp_check = NLPCheck()
 
 menu_list = [
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken with Rice", 3.00,
+     618],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken Wing with Rice", 3.00,
+     620],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Drumstick Rice", 2.50,
+     687],
     ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice", 2.50,
-     250],
+     688],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken with Rice", 3.00,
+     618],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice", 3.00,
+     620],
     ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice", 2.50,
-     250],
+     687],
     ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice", 2.50,
-     250],
-    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice", 2.50,
-     250]]
+     688],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Steamed Chicken with Rice",
+     3.00,
+     618],
+    ["https://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-lg-691.jpg", "Hainanese Chicken Rice",
+     3.00,
+     620]]
 
 @app.route('/menu')
 def return_menu():
