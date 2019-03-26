@@ -116,7 +116,7 @@ locket==0.2.0
 lockfile==0.12.2
 lxml==4.2.5
 # Editable Git install with no remote (magenta==1.0.2)
--e /home/samsonyubaijian/anaconda3/lib/python3.7/site-packages
+#-e /home/samsonyubaijian/anaconda3/lib/python3.7/site-packages
 Markdown==3.0.1
 MarkupSafe==1.0
 matplotlib==2.2.3
