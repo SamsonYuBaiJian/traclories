@@ -11,7 +11,7 @@ class Menu extends Component {
             items: []
         };
 
-        axios.get('http://127.0.0.1:5000/menu')
+        axios.get('https://traclories.herokuapp.com/menu')
             .then((response) => {
                 console.log("response", response);
                 var arr = []
