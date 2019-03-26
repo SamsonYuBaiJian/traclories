@@ -107,6 +107,7 @@ pycparser==2.19
 pycrypto==2.6.1
 pycups==1.9.73
 PyDispatcher==2.0.5
+pyemd==0.5.1
 pyglet==1.3.2
 Pygments==2.2.0
 #pygobject==3.26.1
