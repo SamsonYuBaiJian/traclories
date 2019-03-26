@@ -30,7 +30,7 @@ def update_menu():
     with open('./demo.csv', 'a') as file:
         filewriter = csv.writer(file)
         filewriter.writerow(
-            [name, calorie, image, float(price)])
+            [name, int(calorie), image, float(price)])
     return "OK"
 
 @app.route('/calculate',methods=['POST'])
