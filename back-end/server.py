@@ -46,4 +46,7 @@ def update_menu():
 @app.route('/calculate',methods=['POST'])
 def calculate():
     name = request.json["name"]
-    return int(nlp_check.test(name))
+    try:
+        return int(nlp_check.test(name))
+    except:
+        return nlp_check.test(name)
