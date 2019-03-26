@@ -40,10 +40,10 @@ def update_menu():
     calorie = request.json["calories"]
     image = request.json["image"]
     price = request.json["price"]
-    menu_list.append([image, name, price, calorie])
+    menu_list.append([image, name, float(price), int(calorie)])
     return "OK"
 
 @app.route('/calculate',methods=['POST'])
 def calculate():
     name = request.json["name"]
-    return nlp_check.test(name)
+    return int(nlp_check.test(name))
