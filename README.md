@@ -1,11 +1,11 @@
 # Traclories
-Automating calorie tracking by integrating DBS PayLah! and Healthy 365.
-Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup, pandas, React, Flask, Heroku and VGG-16.
-Deployed to a live server on Heroku for demonstration purposes.
-Created React front-end user interface for vendors to sign up for accounts to upload their food items.
-Created Flask back-end to link the front-end to the machine learning models.
-Used Keras dense layers and ReLU activations to train neural network to apply the appropriate weights to the five vectors for each datapoint.
-Applied natural language processing with Gensim and NLTK to find the five nearest word vectors.
+Automating calorie tracking by integrating DBS PayLah! and Healthy 365.&nbsp;
+Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup, pandas, React, Flask, Heroku and VGG-16.&nbsp;
+Deployed to a live server on Heroku for demonstration purposes.&nbsp;
+Created React front-end user interface for vendors to sign up for accounts to upload their food items.&nbsp;
+Created Flask back-end to link the front-end to the machine learning models.&nbsp;
+Used Keras dense layers and ReLU activations to train neural network to apply the appropriate weights to the five vectors for each datapoint.&nbsp;
+Applied natural language processing with Gensim and NLTK to find the five nearest word vectors.&nbsp;
 Scraped nutritional data from Allrecipes with BeautifulSoup.
 
 ## Steps
