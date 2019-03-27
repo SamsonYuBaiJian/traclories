@@ -27,3 +27,5 @@ Note: The computer vision test with VGG-16 failed because the approximate neares
 ![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/menu.png)
 ### Add Items
 ![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/add.png)
+### Heroku Log
+![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/heroku.png)
