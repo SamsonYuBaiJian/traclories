@@ -15,3 +15,7 @@ Collected nutritional data from Allrecipes with BeautifulSoup.
 7. Deployed to a live server on Heroku for demonstration purposes.
 
 Note: The computer vision test with VGG-16 failed because the approximate nearest neighbour algorithm used to build the tree structure for existing datapoints could not be updated incrementally to estimate the calories in new food items. (./back-end/cv_unused)
+
+## Screenshots:
+### Login Page
+![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/login.png)
