@@ -1,12 +1,12 @@
 # Traclories
-Automating calorie tracking by integrating DBS PayLah! and Healthy 365.<br/>
-Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup, pandas, React, Flask, Heroku and VGG-16.<br/>
-Deployed to a live server on Heroku for demonstration purposes.<br/>
-Created React front-end user interface for vendors to sign up for accounts to upload their food items.<br/>
-Created Flask back-end to link the front-end to the machine learning models.<br/>
-Used Keras dense layers and ReLU activations to train neural network to apply the appropriate weights to the five vectors for each datapoint.<br/>
-Applied natural language processing with Gensim and NLTK to find the five nearest word vectors.<br/>
-Scraped nutritional data from Allrecipes with BeautifulSoup.
+- Automating calorie tracking by integrating DBS PayLah! and Healthy 365.
+- Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup, pandas, React, Flask, Heroku and VGG-16.
+- Deployed to a live server on Heroku for demonstration purposes.
+- Created React front-end user interface for vendors to sign up for accounts to upload their food items.
+- Created Flask back-end to link the front-end to the machine learning models.
+- Used Keras dense layers and ReLU activations to train neural network to apply the appropriate weights to the five vectors for each datapoint.
+- Applied natural language processing with Gensim and NLTK to find the five nearest word vectors.
+- Scraped nutritional data from Allrecipes with BeautifulSoup.
 
 ## Steps
 1. Scraped food information from https://www.allrecipes.com/recipes/. (./back-end/scraper.py)
