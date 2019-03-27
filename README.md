@@ -17,6 +17,10 @@ Collected nutritional data from Allrecipes with BeautifulSoup.
 Note: The computer vision test with VGG-16 failed because the approximate nearest neighbour algorithm used to build the tree structure for existing datapoints could not be updated incrementally to estimate the calories in new food items. (./back-end/cv_unused)
 
 ## Screenshots
+### NLP Model Predictions
+![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/nlp.png)
+### Loss Graph from Keras Neural Network
+![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/loss.png)
 ### Login
 ![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/login.png)
 ### Menu
