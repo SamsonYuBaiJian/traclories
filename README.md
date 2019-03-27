@@ -3,7 +3,7 @@ Calorie estimation with Keras, Gensim, NLTK, pandas, React, Flask and Heroku (VG
 Automating calorie tracking by integrating DBS PayLah! and Healthy 365.
 Collected nutritional data from Allrecipes with BeautifulSoup.
 
-## Steps:
+## Steps
 1. Scraped food information from https://www.allrecipes.com/recipes/. (./back-end/scraper.py)
     - Information is saved. (./back-end/info.csv)
 2. Applied natural language processing with Gensim and NLTK to find the five nearest word vectors. (./back-end/nlp_test.py)
@@ -16,7 +16,7 @@ Collected nutritional data from Allrecipes with BeautifulSoup.
 
 Note: The computer vision test with VGG-16 failed because the approximate nearest neighbour algorithm used to build the tree structure for existing datapoints could not be updated incrementally to estimate the calories in new food items. (./back-end/cv_unused)
 
-## Screenshots:
+## Screenshots
 ### Login
 ![Screenshot](https://raw.github.com/SamsonYuBaiJian/traclories/master/screenshots/login.png)
 ### Menu
