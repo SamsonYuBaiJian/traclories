@@ -42,7 +42,7 @@ class SignInForm extends Component {
           <div className="App__Form">
 
                 <div className="FormCenter">
-                <div className="Big__Title">Traclories</div>
+                <div className="Big__Title">TrackLah!</div>
                     <form onSubmit={this.handleSubmit} onSubmit={this.handleSubmit}>
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="email">Email</label>

@@ -1,4 +1,4 @@
-# Traclories
+# TrackLah!
 - Automating calorie tracking by integrating DBS PayLah! and Healthy 365.
 - Calorie estimation with Keras, Gensim, NLTK, BeautifulSoup, pandas, React, Flask, Heroku and VGG-16.
 - Deployed to a live server on Heroku for demonstration purposes.

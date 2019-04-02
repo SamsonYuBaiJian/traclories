@@ -34,7 +34,7 @@ class Menu extends Component {
           <div className="App__Aside"><img src="https://www.azamaraclubcruises.com/sites/default/files/heros/med-food-hero.jpg" style={{width: "100%",height:"100%"}}/>
           </div>
 
-          <div className="Menu__Title">Traclories</div>
+          <div className="Menu__Title">TrackLah!</div>
 
           <div className="App__FormTop">
               <div className="FormTitle">
