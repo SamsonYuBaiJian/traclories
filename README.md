@@ -1,9 +1,9 @@
 # TrackLah!
-- Automated calorie tracking by integrating DBS PayLah! and Healthy 365
+- Automated calorie tracking by integrating DBS PayLah! and Healthy 365 with deep learning
 - Deployed to a live server on Heroku for demonstration purposes
 - Created React front-end user interface for vendors to sign up for accounts to upload their food items
 - Made the Flask back-end server
-- Used a Keras neural network to do calorie predictions
+- Used a Keras neural network to do calorie predictions on the five word vectors
 - Used Gensim and NLTK to find the five nearest word vectors
 - Scraped nutritional data from Allrecipes with BeautifulSoup
 
