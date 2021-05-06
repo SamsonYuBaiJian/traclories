@@ -40,7 +40,7 @@ docutils==0.14
 edimdownloader==1.1.5
 firebase-admin==2.13.0
 Flask==1.0.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 future==0.17.1
 gast==0.2.0
 gensim==3.7.1
